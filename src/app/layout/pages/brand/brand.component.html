@@ -1,0 +1,29 @@
+
+
+<h1 class="text-main  text-4xl  font-bold  mx-auto  py-6   text-center"> All Brands </h1> 
+
+<div class="w-10/12 mx-auto flex  flex-wrap">
+    
+        @for (brand of allBrands.data ; track brand._id) {
+          <div class="w-1/4  p-2 ">
+            <div class=" product p-3 flex flex-col justify-between ">
+              <div class="cursor-pointer" >
+                <img [src]="brand.image" class="w-100" [alt]="brand.name">
+                <h4 class=" text-center fw-bold">{{brand.name}}</h4>
+              </div>
+            </div>
+          </div>
+        }
+    </div>
+
+
+
+
+
+
+
+    
+ 
+
+
+

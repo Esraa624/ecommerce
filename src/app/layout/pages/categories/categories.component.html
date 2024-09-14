@@ -1,0 +1,24 @@
+
+    
+        <div  class="w-10/12 mx-auto flex  flex-wrap"   >
+        
+           @for (item of all_catagory; track $index) {
+            <div class="w-1/3  p-2">
+
+            <div class=" product p-3 flex flex-col justify-between ">
+
+            <div [routerLink]="['/product',item._id]" (click)="show_sup(item._id,item.name)" class="  ">
+                
+                    <img [src]="item.image" class="w-full h-48" alt="">
+                    <p class="font-bold text-xl p-1 text-main">{{item.name}}</p>
+                
+            </div>
+           
+        
+
+
+       
+    </div>
+            </div>
+           }
+        </div>

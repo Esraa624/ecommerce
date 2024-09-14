@@ -1,0 +1,110 @@
+
+
+  <div class="w-10/12 mx-auto flex py-7 ">
+
+
+    
+     <div class="w-3/4 main-img  ">
+    
+        <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide><img src="./assets/images/main-slider-1.jpeg" class="w-full" alt=""></ng-template>  
+            <ng-template carouselSlide><img src="./assets/images/main-slider-2.jpeg" class="w-full" alt=""></ng-template>  
+            <ng-template carouselSlide><img src="./assets/images/main-slider-3.jpeg" class="w-full"  alt=""></ng-template>  
+          </owl-carousel-o>
+        
+    </div>
+    
+     <div class="w-1/4 secondary-img  ">
+        <img src="./assets/images/main-slider-2.jpeg" class="w-full" alt="">
+        <img src="./assets/images/main-slider-3.jpeg" class="w-full"  alt="">
+    </div>
+    
+    </div>
+    
+<!-- slider category -->
+
+
+<div class="w-full mx-auto    flex py-5 ">
+    <div class="w-11/12 main-img  ">
+
+    <owl-carousel-o [options]="customOptions_cat">
+
+
+        @for (cat of categories; track $index) {
+        <ng-template carouselSlide>
+            
+            <img [src]="cat.image" class="w-full h-[250px] " alt="">
+            
+            <h3 class="text-center p-2">{{cat.name}}</h3>
+        </ng-template>
+        }
+
+
+    </owl-carousel-o>
+
+    </div>
+</div>
+
+
+   
+    <!-- <input type="text" [(ngModel)]="searchTerm" > -->
+    <div class="mx-auto flex py-7   text-center w-[50%]      ">
+        <input type="text" [(ngModel)]="searchTerm"  placeholder="search..."  class=" w-full rounded-md product"  name="" id="" >
+        </div>
+    
+    
+    <div class="w-10/12 mx-auto flex  flex-wrap">
+    
+    
+       
+    
+       
+        @for (product of productList | filter :searchTerm  ; track $index) {
+    
+            <div class="w-1/4     p-2  " [title]="product.title">
+    
+                <div class="product p-3  flex flex-col justify-between ">
+    
+                    <div [routerLink]="['/productdetails',product._id ]" >
+                        <img [src]="product.imageCover" alt="" class="w-full">
+        
+                    <h3 class="text-main">{{product.category.name }}</h3>
+                    <h2>{{product.title.split('', 3).join("")}}</h2>
+                    <div  class="flex justify-between">
+                        <span>{{product.price |currency: 'EGP' }}</span>
+                        <span>{{product.ratingsAverage}}
+                            <i class=" fa-solid fa-star rating-color "></i>
+                        </span>
+                    </div>
+
+                    <div  class="flex justify-between">
+                        <span></span>
+                    
+                        <span class="   "       >
+                            <i class="fa-solid fa-heart  text-red-500 text-xl  "></i>  
+                        </span>
+                        </div>
+
+                </div>
+    
+    
+                    <button class="btn-main w-full " (click)="addProduct(product._id)" >
+                        
+                       @if(isLoading){
+                        <i class="fa fa-spin fa-spinner"></i>
+                       }
+                        +Add</button>
+                </div>
+    
+            </div>
+    
+    
+        }
+    
+    
+    
+    
+    
+    
+    </div>
+    
